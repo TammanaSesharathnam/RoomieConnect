@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roomie Connect - Home</title>
+    <link rel="stylesheet" href="styless.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        #matching-profiles{
+            color:#181313;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background-color: #6a1b9a;
+            color: white;
+            padding: 20px;
+            width: 250px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+
+        .sidebar ul li a {
+            color: #ede7f1;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #575757;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        header p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .search-filters {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    position: relative;
+    background-size: 50%; /* Decrease size of watermark */
+    background-position: center top; /* Move the image up */
+    background-repeat: no-repeat;
+}
+
+
+        .search-filters h2, 
+        .search-filters label, 
+        .search-filters button {
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-filters::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .search-filters h2 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #6a1b9a;
+        }
+
+        .search-filters form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .search-filters label {
+            flex: 1 1 calc(50% - 10px);
+            display: flex;
+            align-items: center;
+            color: #6a1b9a;
+        }
+
+        .search-filters input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .search-filters button {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #6a1b9a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-filters button:hover {
+            background-color: #9843cd;
+        }
+
+        .features {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .features .feature {
+            flex: 1;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #9843cd;
+        }
+
+        .features p {
+            color: #6a1b9a;
+        }
+
+        .features .feature img {
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 4px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>Roomie Connect</h2>
+            </div>
+            <ul class="dashboard">
+                <li><a href="about.html">About</a></li>
+                <li><a href="p.html">My Profile</a></li>
+                <li><a href="profiles.html">Search Roommates</a></li>
+                <li><a href="thankyou.html">Log-out</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <h1>Welcome to Roomie Connect</h1>
+                <p>Your perfect roommate is just a click away!</p>
+            </header>
+
+            <!-- Search Filters Section -->
+            <div class="search-filters">
+                <h2>Search Filters</h2>
+                <form id="filters-form">
+                    <label><input type="checkbox" name="veg" value="veg" onclick="toggleVegNonVeg()"> Veg</label>
+                    <label><input type="checkbox" name="nonveg" value="nonveg" onclick="toggleVegNonVeg()"> Non-Veg</label>
+                    <label><input type="checkbox" name="introvert" value="introvert" onclick="toggleIntrovertExtrovert()"> Introvert</label>
+                    <label><input type="checkbox" name="extrovert" value="extrovert" onclick="toggleIntrovertExtrovert()"> Extrovert</label>
+                    <label><input type="checkbox" name="nightowl" value="nightowl" onclick="toggleNightMorning()"> Night Owl</label>
+                    <label><input type="checkbox" name="morningbird" value="morningbird" onclick="toggleNightMorning()"> Morning Bird</label>
+                    <label><input type="checkbox" name="male" value="male" onclick="toggleGender('male')"> Male</label>
+                    <label><input type="checkbox" name="female" value="female" onclick="toggleGender('female')"> Female</label>
+                    <button type="button" onclick="applyFilters()">Apply Filters</button>
+                </form>
+                <div id="matching-profiles"></div>
+                
+            </div>
+
+            <!-- Features Section -->
+            <section class="features">
+                <div class="feature">
+                    <h2>Find Compatible Roommate</h2>
+                    <p>Search for roommates who match your preferences, habits, and lifestyle.</p>
+                    <img src="https://thumbs.dreamstime.com/b/college-move-day-two-young-man-carrying-couch-loaded-other-belongings-moving-to-dormitory-eps-vector-illustration-141296315.jpg" alt="Find Compatible Roommate">
+                </div>
+                <div class="feature">
+                    <h2>Easy and Accessible</h2>
+                    <p>Our platform is easy to navigate, ensuring you can find your perfect roommate with ease.</p>
+                    <img src="https://img.freepik.com/free-vector/cartoon-illustration-small-dorm-room-dormitory-interior-inside-hostel-bedroom_1441-1836.jpg" alt="Easy and Accessible">
+                </div>
+                <div class="feature">
+                    <h2>Search Filters</h2>
+                    <p>Customize your search by applying various filters like lifestyle preferences, habits, and more!</p>
+                    <img src="https://previews.123rf.com/images/iconicbestiary/iconicbestiary1705/iconicbestiary170500207/77391431-%EA%B8%B0%EC%88%99%EC%82%AC%EC%97%90-%EC%82%B4%EA%B3%A0%EC%9E%88%EB%8A%94-%EB%8C%80%ED%95%99%EC%83%9D.jpg" alt="Search Filters">
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="scriptss.js"></script>
+    
+</body>
+</html>

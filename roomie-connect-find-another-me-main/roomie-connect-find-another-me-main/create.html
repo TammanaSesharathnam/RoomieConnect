@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"></div>
+        <h1>Let's <br> Create <br> Your Account</h1>
+        <form class="signup-form" id="signupForm">
+            <div class="input-group">
+                <input type="text" id="fullName" placeholder="Full Name" required>
+                <p class="error-message" id="fullNameError">Please enter your full name.</p>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Email Address" required>
+                <p class="error-message" id="emailError">Please enter a valid email address.</p>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password" required>
+                <p class="error-message" id="passwordError">Please enter a password.</p>
+            </div>
+            <div class="input-group">
+                <input type="password" id="confirmPassword" placeholder="Retype Password" required>
+                <p class="error-message" id="confirmPasswordError">Passwords do not match.</p>
+            </div>
+            <div class="terms">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">I agree to the <a href="#">Terms & Privacy</a></label>
+                <p class="error-message" id="termsError">You must agree to the Terms & Privacy.</p>
+            </div>
+            <button type="button" class="signup-btn" onclick="validateForm()">Sign Up</button>
+            <p class="signin-text">Have an account? <a href="index.html">Sign In</a></p>
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            // Reset error styles and messages
+            const resetError = (fieldId, errorId) => {
+                const field = document.getElementById(fieldId);
+                const error = document.getElementById(errorId);
+                field.classList.remove("error");
+                error.style.display = "none";
+            };
+
+            const showError = (fieldId, errorId, message) => {
+                const field = document.getElementById(fieldId);
+                const error = document.getElementById(errorId);
+                field.classList.add("error");
+                error.textContent = message;
+                error.style.display = "block";
+                isValid = false;
+            };
+
+            // Full Name validation
+            const fullName = document.getElementById("fullName").value.trim();
+            if (fullName === "") {
+                showError("fullName", "fullNameError", "Please enter your full name.");
+            } else {
+                resetError("fullName", "fullNameError");
+            }
+
+            // Email validation
+            const email = document.getElementById("email").value.trim();
+            if (email === "" || !/\S+@\S+\.\S+/.test(email)) {
+                showError("email", "emailError", "Please enter a valid email address.");
+            } else {
+                resetError("email", "emailError");
+            }
+
+            // Password validation
+            const password = document.getElementById("password").value.trim();
+            if (password === "") {
+                showError("password", "passwordError", "Please enter a password.");
+            } else {
+                resetError("password", "passwordError");
+            }
+
+            // Confirm Password validation
+            const confirmPassword = document.getElementById("confirmPassword").value.trim();
+            if (confirmPassword === "" || confirmPassword !== password) {
+                showError("confirmPassword", "confirmPasswordError", "Passwords do not match.");
+            } else {
+                resetError("confirmPassword", "confirmPasswordError");
+            }
+
+            // Terms and conditions validation
+            const termsChecked = document.getElementById("terms").checked;
+            if (!termsChecked) {
+                showError("terms", "termsError", "You must agree to the Terms & Privacy.");
+            } else {
+                resetError("terms", "termsError");
+            }
+
+            // Redirect if valid
+            if (isValid) {
+                window.location.href = "form.html"; // Redirect to the next page
+            }
+        }
+    </script>
+</body>
+</html>

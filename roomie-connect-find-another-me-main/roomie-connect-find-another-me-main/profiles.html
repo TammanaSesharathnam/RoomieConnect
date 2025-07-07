@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Profiles</title>
+    <style>
+        /* Reset and basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 250px;
+            background-color: #6a1b9a;
+            padding: 20px;
+            color: white;
+        }
+
+        .sidebar .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar .logo h2 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .sidebar .dashboard {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar .dashboard li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar .dashboard a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar .dashboard a:hover {
+            background-color: #9c4dcc;
+            border-radius: 5px;
+        }
+
+        /* Main content */
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        /* Profiles list styling */
+        .matching-profiles-list {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .profile {
+            background-color: #f0e6f6;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile h3 {
+            color: #6a1b9a;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .profile p {
+            color: #555;
+        }
+
+        .profile .preferences {
+            margin-top: 10px;
+            color: #888;
+        }
+        
+
+        .profile .view-profile-button {
+            background-color: #6a1b9a;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .profile .view-profile-button:hover {
+            background-color: #9c4dcc;
+        }
+
+        /* Header text styling */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            color: #6a1b9a;
+        }
+
+        header p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .back-to-home-button {
+    display: inline-block;                /* Change to inline-block to prevent full-width button */
+    background-color: #6a1b9a;            /* Main button color */
+    color: white;                         /* Text color */
+    padding: 8px 15px;                    /* Adjust padding for a smaller button */
+    font-size: 14px;                      /* Reduce font size further */
+    border: none;                         /* Remove default border */
+    cursor: pointer;                      /* Pointer cursor for interactivity */
+    margin-top: 20px;
+    margin-left: 45%;
+    margin-right: 45%;                     /* Space above the button */
+    text-align: center;                  /* Center the text inside */
+    border-radius: 5px;                   /* Rounded corners */
+    text-decoration: none;                /* Remove text underline */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    width: auto;                          /* Auto width based on content */
+}
+
+.back-to-home-button:hover {
+    background-color: #9c4dcc;            /* Hover color for the button */
+}
+
+
+    </style>
+</head>
+
+<body>
+
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <h1>Matching Profiles</h1>
+                <p>Here are the profiles that match your selected filters.</p>
+            </header>
+
+            <!-- Matching profiles section -->
+            <div id="matching-profiles" class="matching-profiles-list">
+                <!-- Profiles will be dynamically inserted here by JavaScript -->
+            </div>
+            <!-- Back to Home button at the bottom -->
+            <pre><a href="home.html" class="back-to-home-button">Back to Home</a></pre>
+        </div>
+    </div>
+
+    <!-- External JavaScript file -->
+    <script src="scriptss.js"></script>
+</body>
+</html>

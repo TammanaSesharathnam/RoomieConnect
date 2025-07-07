@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background:white;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Watermark image styling */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px 30px;
+            background: #5b0094;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px  #5b0094;
+            width: 80%;
+            max-width: 500px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            color: #fff;
+            background: #ff6b6b;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #ff4757;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Watermark Image -->
+    <img src="https://media.istockphoto.com/id/1291922442/vector/neighbors-keeping-pets-in-their-flats.jpg?s=612x612&w=0&k=20&c=UnezI5ZtzKlCFu99vrdUp1nNDaij-oqZSjMZHuEh1ic=" alt="Watermark" class="watermark" width="200" />
+
+    <div class="container">
+        <h1>Thank You!</h1>
+        <p>Thanks for visiting our website. We hope you had a great experience!</p>
+        <a href="index.html" class="btn">Login</a>
+    </div>
+
+</body>
+</html>

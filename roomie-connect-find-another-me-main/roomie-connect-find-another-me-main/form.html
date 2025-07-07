@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Preferences</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(rgba(128, 0, 128, 0.8), rgba(128, 0, 128, 0.8)), url('https://media.istockphoto.com/id/1291922442/vector/neighbors-keeping-pets-in-their-flats.jpg?s=612x612&w=0&k=20&c=UnezI5ZtzKlCFu99vrdUp1nNDaij-oqZSjMZHuEh1ic=') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .container {
+            width: 80%; /* Increased width */
+            max-width: 800px; /* Increased max-width */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            height: auto; /* Decreased height */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #f3f1f5;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .form-group .radio-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-group .radio-group label {
+            font-weight: normal;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #6a0dad;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5a0ca0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Preferences</h1>
+        <form id="preferencesForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <input type="text" id="gender" name="gender" placeholder="Enter your gender" required>
+            </div>
+            <div class="form-group">
+                <label>Food Preference</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="food" value="veg" required> Veg</label>
+                    <label><input type="radio" name="food" value="non-veg"> Non-Veg</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Sleep Preference</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="sleep" value="morning-bird" required> Morning Bird</label>
+                    <label><input type="radio" name="sleep" value="night-owl"> Night Owl</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Social Interaction</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="social" value="introvert" required> Introvert</label>
+                    <label><input type="radio" name="social" value="extrovert"> Extrovert</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cleanliness">Cleanliness (1-5)</label>
+                <input type="number" id="cleanliness" name="cleanliness" min="1" max="5" required>
+            </div>
+            <div class="form-group">
+                <label for="budget">Budget</label>
+                <input type="number" id="budget" name="budget" placeholder="Enter your budget" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" placeholder="Enter your preferred location" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('preferencesForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const gender = document.getElementById('gender').value;
+            const food = document.querySelector('input[name="food"]:checked').value;
+            const sleep = document.querySelector('input[name="sleep"]:checked').value;
+            const social = document.querySelector('input[name="social"]:checked').value;
+            const cleanliness = document.getElementById('cleanliness').value;
+            const budget = document.getElementById('budget').value;
+            const location = document.getElementById('location').value;
+
+            const profile = { name, gender, food, sleep, social, cleanliness, budget, location };
+
+            localStorage.setItem('profile', JSON.stringify(profile));
+
+            // Redirect to the profile page
+            window.location.href = 'home.html';
+        });
+    </script>
+</body>
+</html>
